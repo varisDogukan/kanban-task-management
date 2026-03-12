@@ -1,6 +1,7 @@
+import BoardPage from "../features/boards/components/BoardPage";
 import { useBoardStore } from "../features/boards/store/boardStore";
 
-export default function App() {
+function App() {
   const { boards, selectedBoardId } = useBoardStore();
 
   const selectedBoard =
@@ -11,13 +12,12 @@ export default function App() {
       <h1>Kanban App</h1>
 
       {selectedBoard ? (
-        <div>
-          <h2>{selectedBoard.name}</h2>
-          <p>Kolon sayısı: {selectedBoard.columns.length}</p>
-        </div>
+        <BoardPage board={selectedBoard} />
       ) : (
         <p>Seçili board bulunamadı.</p>
       )}
     </main>
   );
 }
+
+export default App;
