@@ -1,11 +1,18 @@
+import { useEffect } from "react";
 import BoardPage from "../features/boards/components/BoardPage";
 import { useBoardStore } from "../features/boards/store/boardStore";
+import { useThemeStore } from "../features/theme/store/themeStore";
 
 function App() {
   const { boards, selectedBoardId } = useBoardStore();
+  const { theme } = useThemeStore();
 
   const selectedBoard =
     boards.find((board) => board.id === selectedBoardId) ?? null;
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
 
   return (
     <main>
@@ -14,7 +21,7 @@ function App() {
       {selectedBoard ? (
         <BoardPage board={selectedBoard} />
       ) : (
-        <p>Seçili board bulunamadı.</p>
+        <p>Selected board not found.</p>
       )}
     </main>
   );
