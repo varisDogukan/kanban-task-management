@@ -5,6 +5,9 @@ import { useUiStore } from "@features/ui/store/uiStore";
 import { useThemeStore } from "@features/theme/store/themeStore";
 import { useBoardStore } from "@features/boards/store/boardStore";
 import boardIcon from "@assets/icons/icon-board.svg";
+import darkThemeIcon from "@assets/icons/icon-dark-theme.svg";
+import lightThemeIcon from "@assets/icons/icon-light-theme.svg";
+import VisuallyHidden from "@components/primitives/VisuallyHidden";
 
 import styles from "./Sidebar.module.scss";
 
@@ -90,17 +93,33 @@ function Sidebar() {
 
       <div className={styles.footer}>
         <div className={styles.themePanel}>
-          <span>Light</span>
+          <img
+            src={lightThemeIcon}
+            alt=''
+            aria-hidden='true'
+            className={styles.themeIcon}
+          />
 
           <button
             type='button'
             onClick={toggleTheme}
             aria-pressed={theme === "dark"}
+            className={
+              theme === "dark"
+                ? `${styles.themeToggle} ${styles.themeToggleActive}`
+                : styles.themeToggle
+            }
           >
-            Toggle theme
+            <VisuallyHidden>Toggle color theme</VisuallyHidden>
+            <span aria-hidden='true' className={styles.themeToggleThumb} />
           </button>
 
-          <span>Dark</span>
+          <img
+            src={darkThemeIcon}
+            alt=''
+            aria-hidden='true'
+            className={styles.themeIcon}
+          />
         </div>
 
         <button
