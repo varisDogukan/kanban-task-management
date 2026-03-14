@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
+
 import Sidebar from "@components/shared/Sidebar";
-import { useThemeStore } from "@features/theme/store/themeStore";
 import { useUiStore } from "@features/ui/store/uiStore";
+import { useThemeStore } from "@features/theme/store/themeStore";
 
 type AppLayoutProps = {
   children: React.ReactNode;

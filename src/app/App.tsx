@@ -3,10 +3,11 @@ import BoardPage from "@features/boards/components/BoardPage";
 import { useBoardStore } from "@features/boards/store/boardStore";
 
 function App() {
-  const { boards, selectedBoardId } = useBoardStore();
-
-  const selectedBoard =
-    boards.find((board) => board.id === selectedBoardId) ?? null;
+  const selectedBoard = useBoardStore((state) => {
+    return (
+      state.boards.find((board) => board.id === state.selectedBoardId) ?? null
+    );
+  });
 
   return (
     <AppLayout>
