@@ -24,39 +24,41 @@ function Sidebar() {
 
   return (
     <aside id='app-sidebar' aria-label='Board sidebar' className={styles.root}>
-      <p className={styles.heading}>ALL BOARDS ({boards.length})</p>
+      <div className={styles.body}>
+        <p className={styles.heading}>ALL BOARDS ({boards.length})</p>
 
-      <div role='tablist' aria-label='Boards' aria-orientation='horizontal'>
-        <ul className={styles.list}>
-          {boards.map((board) => {
-            const isActive = board.id === selectedBoardId;
+        <div role='tablist' aria-label='Boards' aria-orientation='horizontal'>
+          <ul className={styles.list}>
+            {boards.map((board) => {
+              const isActive = board.id === selectedBoardId;
 
-            return (
-              <li key={board.id}>
-                <button
-                  type='button'
-                  role='tab'
-                  aria-selected={isActive}
-                  aria-controls={`panel-${board.id}`}
-                  id={`tab-${board.id}`}
-                  onClick={() => selectBoard(board.id)}
-                  className={
-                    isActive
-                      ? `${styles.button} ${styles.buttonActive}`
-                      : styles.button
-                  }
-                >
-                  {board.name}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+              return (
+                <li key={board.id}>
+                  <button
+                    type='button'
+                    role='tab'
+                    aria-selected={isActive}
+                    aria-controls={`panel-${board.id}`}
+                    id={`tab-${board.id}`}
+                    onClick={() => selectBoard(board.id)}
+                    className={
+                      isActive
+                        ? `${styles.button} ${styles.buttonActive}`
+                        : styles.button
+                    }
+                  >
+                    {board.name}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        <button type='button' className={styles.createButton}>
+          + Create New Board
+        </button>
       </div>
-
-      <button type='button' className={styles.createButton}>
-        + Create New Board
-      </button>
 
       <div className={styles.footer}>
         <div className={styles.themePanel}>
