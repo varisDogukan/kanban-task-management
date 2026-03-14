@@ -11,7 +11,7 @@ export default function Sidebar() {
   );
 
   return (
-    <aside>
+    <aside id='app-sidebar' aria-label='Board sidebar'>
       <p>ALL BOARDS ({boards.length})</p>
 
       <div role='tablist' aria-label='Boards' aria-orientation='horizontal'>
