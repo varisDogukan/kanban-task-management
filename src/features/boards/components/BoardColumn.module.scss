@@ -1,0 +1,28 @@
+.root {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.header {
+  margin-bottom: var(--space-200);
+}
+
+.title {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-heading-s);
+  line-height: var(--line-height-heading-s);
+  font-weight: var(--font-weight-heading-s);
+  letter-spacing: var(--letter-spacing-heading-s);
+}
+
+.taskCount {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+  font-weight: var(--font-weight-body-m);
+}
+
+.task {
+  display: grid;
+  gap: var(--space-200);
+}
