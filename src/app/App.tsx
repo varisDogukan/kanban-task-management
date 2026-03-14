@@ -1,5 +1,5 @@
 import AppLayout from "@app/AppLayout";
-import BoardPage from "@features/boards/components/BoardPage";
+import { BoardHeader, BoardPage } from "@features/boards/components";
 import { useBoardStore } from "@features/boards/store/boardStore";
 
 function App() {
@@ -11,10 +11,11 @@ function App() {
 
   return (
     <AppLayout>
-      <h1>Kanban App</h1>
-
       {selectedBoard ? (
-        <BoardPage board={selectedBoard} />
+        <>
+          <BoardHeader title={selectedBoard.name} />
+          <BoardPage board={selectedBoard} />
+        </>
       ) : (
         <p>Selected board not found.</p>
       )}
