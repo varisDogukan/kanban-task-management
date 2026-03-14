@@ -4,6 +4,7 @@ import logoLight from "@assets/icons/logo-light.svg";
 import { useUiStore } from "@features/ui/store/uiStore";
 import { useThemeStore } from "@features/theme/store/themeStore";
 import { useBoardStore } from "@features/boards/store/boardStore";
+import boardIcon from "@assets/icons/icon-board.svg";
 
 import styles from "./Sidebar.module.scss";
 
@@ -58,7 +59,15 @@ function Sidebar() {
                         : styles.button
                     }
                   >
-                    {board.name}
+                    <span className={styles.buttonContent}>
+                      <img
+                        src={boardIcon}
+                        alt=''
+                        aria-hidden='true'
+                        className={styles.boardIcon}
+                      />
+                      <span>{board.name}</span>
+                    </span>
                   </button>
                 </li>
               );
@@ -67,7 +76,15 @@ function Sidebar() {
         </div>
 
         <button type='button' className={styles.createButton}>
-          + Create New Board
+          <span className={styles.buttonContent}>
+            <img
+              src={boardIcon}
+              alt=''
+              aria-hidden='true'
+              className={styles.boardIcon}
+            />
+            <span>+ Create New Board</span>
+          </span>
         </button>
       </div>
 
