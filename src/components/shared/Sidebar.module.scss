@@ -38,3 +38,30 @@
   background-color: var(--color-purple);
   color: var(--color-white);
 }
+
+.footer {
+  margin-top: var(--space-300);
+  display: grid;
+  gap: var(--space-200);
+}
+
+.themePanel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-200);
+  padding: var(--space-200);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg);
+}
+
+.secondaryButton {
+  width: 100%;
+  padding: var(--space-200);
+  text-align: left;
+  border-radius: var(--radius-lg);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-heading-m);
+  line-height: var(--line-height-heading-m);
+  font-weight: var(--font-weight-heading-m);
+}
