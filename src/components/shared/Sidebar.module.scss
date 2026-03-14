@@ -9,6 +9,10 @@
 .heading {
   margin-bottom: var(--space-200);
   color: var(--color-text-muted);
+  font-size: var(--font-size-heading-s);
+  line-height: var(--line-height-heading-s);
+  font-weight: var(--font-weight-heading-s);
+  letter-spacing: var(--letter-spacing-heading-s);
 }
 
 .list {
@@ -25,6 +29,9 @@
   text-align: left;
   border-radius: var(--radius-lg);
   color: var(--color-text-muted);
+  font-size: var(--font-size-heading-m);
+  line-height: var(--line-height-heading-m);
+  font-weight: var(--font-weight-heading-m);
 }
 
 .buttonActive {
