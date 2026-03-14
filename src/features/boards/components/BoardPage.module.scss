@@ -1,0 +1,11 @@
+.root {
+  height: 100%;
+}
+
+.columns {
+  display: flex;
+  gap: var(--space-300);
+  align-items: flex-start;
+  overflow-x: auto;
+  padding: var(--space-300);
+}

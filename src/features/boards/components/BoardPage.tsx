@@ -1,5 +1,7 @@
-import EmptyBoardState from "./EmptyBoardState";
 import BoardColumn from "./BoardColumn";
+import styles from "./BoardPage.module.scss";
+import EmptyBoardState from "./EmptyBoardState";
+
 import type { Board } from "../types/board.types";
 
 type BoardPageProps = {
@@ -16,10 +18,11 @@ export default function BoardPage({ board }: BoardPageProps) {
       role='tabpanel'
       id={`panel-${board.id}`}
       aria-labelledby={`tab-${board.id}`}
+      className={styles.root}
     >
       <h2>{board.name}</h2>
 
-      <div>
+      <div className={styles.columns}>
         {board.columns.map((column) => (
           <BoardColumn key={column.id} column={column} />
         ))}
