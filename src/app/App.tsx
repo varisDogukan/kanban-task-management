@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import BoardPage from "../features/boards/components/BoardPage";
-import { useBoardStore } from "../features/boards/store/boardStore";
-import { useThemeStore } from "../features/theme/store/themeStore";
-import { useUiStore } from "../features/ui/store/uiStore";
+
+import BoardPage from "@features/boards/components/BoardPage";
+import { useBoardStore } from "@features/boards/store/boardStore";
+import { useThemeStore } from "@features/theme/store/themeStore";
+import { useUiStore } from "@features/ui/store/uiStore";
 
 function App() {
   const { boards, selectedBoardId } = useBoardStore();
