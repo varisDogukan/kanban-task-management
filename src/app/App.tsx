@@ -2,7 +2,7 @@ import AppLayout from "@app/AppLayout";
 import { BoardHeader, BoardPage } from "@features/boards/components";
 import { useBoardStore } from "@features/boards/store/boardStore";
 
-function App() {
+export default function App() {
   const selectedBoard = useBoardStore((state) => {
     return (
       state.boards.find((board) => board.id === state.selectedBoardId) ?? null
@@ -25,5 +25,3 @@ function App() {
     </AppLayout>
   );
 }
-
-export default App;

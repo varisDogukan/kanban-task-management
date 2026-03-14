@@ -1,6 +1,10 @@
 import type { Board } from "../types/board.types";
 import rawData from "../data/data.json";
 
+/**
+ * Returns the initial board list bootstrapped from the challenge JSON data.
+ * Adds deterministic ids for boards, columns, tasks, and subtasks.
+ */
 export function getInitialBoards(): Board[] {
   return rawData.boards.map((board, boardIndex) => ({
     id: `board-${boardIndex + 1}`,

@@ -1,3 +1,6 @@
+/* -------------------------
+  Root
+------------------------- */
 .root {
   width: 300px;
   flex-shrink: 0;
@@ -8,11 +11,29 @@
   background-color: var(--color-surface);
 }
 
+/* -------------------------
+  Logo
+------------------------- */
+.logo {
+  margin-bottom: var(--space-300);
+}
+
+.logoImage {
+  height: 25px;
+  width: auto;
+}
+
+/* -------------------------
+  Body
+------------------------- */
 .body {
   display: grid;
   gap: var(--space-200);
 }
 
+/* -------------------------
+  Navigation
+------------------------- */
 .heading {
   margin-bottom: var(--space-200);
   color: var(--color-text-muted);
@@ -30,6 +51,9 @@
   list-style: none;
 }
 
+/* -------------------------
+  Buttons
+------------------------- */
 .button {
   width: 100%;
   padding: var(--space-200);
@@ -39,11 +63,6 @@
   font-size: var(--font-size-heading-m);
   line-height: var(--line-height-heading-m);
   font-weight: var(--font-weight-heading-m);
-}
-
-.buttonActive {
-  background-color: var(--color-purple);
-  color: var(--color-white);
 }
 
 .buttonContent {
@@ -58,10 +77,6 @@
   flex-shrink: 0;
 }
 
-.buttonActive .boardIcon {
-  opacity: 1;
-}
-
 .createButton {
   width: 100%;
   padding: var(--space-200);
@@ -71,22 +86,6 @@
   font-size: var(--font-size-heading-m);
   line-height: var(--line-height-heading-m);
   font-weight: var(--font-weight-heading-m);
-}
-
-.footer {
-  margin-top: auto;
-  display: grid;
-  gap: var(--space-200);
-}
-
-.themePanel {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-200);
-  padding: var(--space-200);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-bg);
 }
 
 .secondaryButton {
@@ -100,13 +99,26 @@
   font-weight: var(--font-weight-heading-m);
 }
 
-.logo {
-  margin-bottom: var(--space-300);
+/* -------------------------
+  Footer
+------------------------- */
+.footer {
+  margin-top: auto;
+  display: grid;
+  gap: var(--space-200);
 }
 
-.logoImage {
-  height: 25px;
-  width: auto;
+/* -------------------------
+  Theme Toggle
+------------------------- */
+.themePanel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-200);
+  padding: var(--space-200);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg);
 }
 
 .themeIcon {
@@ -132,6 +144,18 @@
   border-radius: 50%;
   background-color: var(--color-white);
   transition: transform 0.2s ease;
+}
+
+/* -------------------------
+  States
+------------------------- */
+.buttonActive {
+  background-color: var(--color-purple);
+  color: var(--color-white);
+}
+
+.buttonActive .boardIcon {
+  opacity: 1;
 }
 
 .themeToggleActive .themeToggleThumb {

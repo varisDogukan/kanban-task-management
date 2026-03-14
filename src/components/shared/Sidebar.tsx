@@ -11,7 +11,11 @@ import VisuallyHidden from "@components/primitives/VisuallyHidden";
 
 import styles from "./Sidebar.module.scss";
 
-function Sidebar() {
+/**
+ * Renders the primary board navigation sidebar.
+ * Includes board selection, theme controls, and sidebar visibility actions.
+ */
+export default function Sidebar() {
   const { boards, selectedBoardId, selectBoard } = useBoardStore(
     useShallow((state) => ({
       boards: state.boards,
@@ -135,5 +139,3 @@ function Sidebar() {
     </aside>
   );
 }
-
-export default Sidebar;

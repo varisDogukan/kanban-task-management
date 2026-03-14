@@ -5,8 +5,6 @@ type VisuallyHiddenProps = {
   children: ReactNode;
 };
 
-function VisuallyHidden({ children }: VisuallyHiddenProps) {
+export default function VisuallyHidden({ children }: VisuallyHiddenProps) {
   return <span className={styles.root}>{children}</span>;
 }
-
-export default VisuallyHidden;

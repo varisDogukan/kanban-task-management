@@ -8,6 +8,10 @@ type BoardPageProps = {
   board: Board;
 };
 
+/**
+ * Renders the selected board content area.
+ * Shows an empty state when the board has no columns.
+ */
 export default function BoardPage({ board }: BoardPageProps) {
   if (board.columns.length === 0) {
     return <EmptyBoardState />;
