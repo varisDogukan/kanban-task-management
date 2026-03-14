@@ -1,6 +1,5 @@
-import BoardColumn from "./BoardColumn";
-import BoardHeader from "./BoardHeader";
-import BoardPage from "./BoardPage";
-import TaskCard from "./TaskCard";
-
-export { BoardColumn, BoardHeader, BoardPage, TaskCard };
+export { default as EmptyBoardState } from "./EmptyBoardState";
+export { default as BoardColumn } from "./BoardColumn";
+export { default as BoardHeader } from "./BoardHeader";
+export { default as BoardPage } from "./BoardPage";
+export { default as TaskCard } from "./TaskCard";

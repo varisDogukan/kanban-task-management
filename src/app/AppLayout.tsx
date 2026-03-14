@@ -18,11 +18,20 @@ export default function AppLayout({ children }: AppLayoutProps) {
 
   return (
     <div>
-      <button type='button' onClick={toggleTheme}>
+      <button
+        type='button'
+        onClick={toggleTheme}
+        aria-pressed={theme === "dark"}
+      >
         Toggle theme
       </button>
 
-      <button type='button' onClick={toggleSidebar}>
+      <button
+        type='button'
+        onClick={toggleSidebar}
+        aria-expanded={isSidebarOpen}
+        aria-controls='app-sidebar'
+      >
         {isSidebarOpen ? "Hide sidebar" : "Show sidebar"}
       </button>
 

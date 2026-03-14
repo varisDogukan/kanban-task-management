@@ -1,3 +1,4 @@
+import EmptyBoardState from "./EmptyBoardState";
 import BoardColumn from "./BoardColumn";
 import type { Board } from "../types/board.types";
 
@@ -6,6 +7,10 @@ type BoardPageProps = {
 };
 
 export default function BoardPage({ board }: BoardPageProps) {
+  if (board.columns.length === 0) {
+    return <EmptyBoardState />;
+  }
+
   return (
     <section
       role='tabpanel'
