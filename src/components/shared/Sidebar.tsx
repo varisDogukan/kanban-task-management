@@ -1,7 +1,10 @@
 import { useShallow } from "zustand/react/shallow";
-import { useBoardStore } from "@features/boards/store/boardStore";
-import { useThemeStore } from "@features/theme/store/themeStore";
+import logoDark from "@assets/icons/logo-dark.svg";
+import logoLight from "@assets/icons/logo-light.svg";
 import { useUiStore } from "@features/ui/store/uiStore";
+import { useThemeStore } from "@features/theme/store/themeStore";
+import { useBoardStore } from "@features/boards/store/boardStore";
+
 import styles from "./Sidebar.module.scss";
 
 function Sidebar() {
@@ -24,6 +27,14 @@ function Sidebar() {
 
   return (
     <aside id='app-sidebar' aria-label='Board sidebar' className={styles.root}>
+      <div className={styles.logo}>
+        <img
+          src={theme === "dark" ? logoLight : logoDark}
+          alt='Kanban'
+          className={styles.logoImage}
+        />
+      </div>
+
       <div className={styles.body}>
         <p className={styles.heading}>ALL BOARDS ({boards.length})</p>
 
