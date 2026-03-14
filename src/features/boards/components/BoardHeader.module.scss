@@ -9,8 +9,9 @@
 }
 
 .title {
-  font-size: 1.125rem;
-  font-weight: 700;
+  font-size: var(--font-size-heading-xl);
+  line-height: var(--line-height-heading-xl);
+  font-weight: var(--font-weight-heading-xl);
   color: var(--color-text);
 }
 
@@ -19,6 +20,9 @@
   border-radius: 999px;
   background-color: var(--color-purple);
   color: var(--color-white);
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+  font-weight: var(--font-weight-body-m);
 }
 
 .action:disabled {
