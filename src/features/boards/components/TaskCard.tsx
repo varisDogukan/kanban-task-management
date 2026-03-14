@@ -1,21 +1,27 @@
 import type { Task } from "../types/board.types";
+import styles from "./TaskCard.module.scss";
 
 type TaskCardProps = {
   task: Task;
 };
 
-export default function TaskCard({ task }: TaskCardProps) {
-  const completedSubTasks = task.subtasks.filter(
+/**
+ * Renders a kanban task card with its title and completed subtask summary.
+ */
+function TaskCard({ task }: TaskCardProps) {
+  const completedSubtasks = task.subtasks.filter(
     (subtask) => subtask.isCompleted,
   ).length;
 
   return (
-    <article>
-      <h4>{task.title}</h4>
+    <article className={styles.root}>
+      <h4 className={styles.title}>{task.title}</h4>
 
-      <p>
-        {completedSubTasks} of {task.subtasks.length} subtasks
+      <p className={styles.meta}>
+        {completedSubtasks} of {task.subtasks.length} subtasks
       </p>
     </article>
   );
 }
+
+export default TaskCard;

@@ -1,0 +1,27 @@
+/* -------------------------
+  Root
+------------------------- */
+.root {
+  padding: var(--space-300);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  box-shadow: 0 4px 6px rgba(54, 78, 126, 0.1);
+}
+
+/* -------------------------
+  Content
+------------------------- */
+.title {
+  margin-bottom: var(--space-100);
+  color: var(--color-text);
+  font-size: var(--font-size-heading-m);
+  line-height: var(--line-height-heading-m);
+  font-weight: var(--font-weight-heading-m);
+}
+
+.meta {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+  font-weight: var(--font-weight-body-m);
+}
