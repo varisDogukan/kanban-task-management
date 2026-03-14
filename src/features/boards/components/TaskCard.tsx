@@ -9,6 +9,8 @@ export default function TaskCard({ task }: TaskCardProps) {
     (subtask) => subtask.isCompleted,
   ).length;
 
+  console.log("Selam");
+
   return (
     <article>
       <h4>{task.title}</h4>

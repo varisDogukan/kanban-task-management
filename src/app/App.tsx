@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+import Sidebar from "@components/shared/Sidebar";
 import BoardPage from "@features/boards/components/BoardPage";
 import { useBoardStore } from "@features/boards/store/boardStore";
 import { useThemeStore } from "@features/theme/store/themeStore";
@@ -28,11 +29,7 @@ function App() {
       </button>
 
       <div>
-        {isSidebarOpen ? (
-          <aside>
-            <p>Sidebar placeholder</p>
-          </aside>
-        ) : null}
+        {isSidebarOpen ? <Sidebar /> : null}
 
         <main>
           <h1>Kanban App</h1>
