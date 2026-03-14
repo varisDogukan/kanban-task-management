@@ -13,7 +13,10 @@ function App() {
     <AppLayout>
       {selectedBoard ? (
         <>
-          <BoardHeader title={selectedBoard.name} />
+          <BoardHeader
+            title={selectedBoard.name}
+            isAddTaskDisabled={selectedBoard.columns.length === 0}
+          />
           <BoardPage board={selectedBoard} />
         </>
       ) : (
