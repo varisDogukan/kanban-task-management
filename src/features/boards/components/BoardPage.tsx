@@ -7,7 +7,11 @@ type BoardPageProps = {
 
 export default function BoardPage({ board }: BoardPageProps) {
   return (
-    <section>
+    <section
+      role='tabpanel'
+      id={`panel-${board.id}`}
+      aria-labelledby={`tab-${board.id}`}
+    >
       <h2>{board.name}</h2>
 
       <div>
