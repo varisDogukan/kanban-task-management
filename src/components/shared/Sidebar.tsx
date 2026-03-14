@@ -54,6 +54,10 @@ function Sidebar() {
         </ul>
       </div>
 
+      <button type='button' className={styles.createButton}>
+        + Create New Board
+      </button>
+
       <div className={styles.footer}>
         <div className={styles.themePanel}>
           <span>Light</span>

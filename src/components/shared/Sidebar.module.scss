@@ -65,3 +65,14 @@
   line-height: var(--line-height-heading-m);
   font-weight: var(--font-weight-heading-m);
 }
+
+.createButton {
+  width: 100%;
+  padding: var(--space-200);
+  text-align: left;
+  border-radius: var(--radius-lg);
+  color: var(--color-purple);
+  font-size: var(--font-size-heading-m);
+  line-height: var(--line-height-heading-m);
+  font-weight: var(--font-weight-heading-m);
+}
