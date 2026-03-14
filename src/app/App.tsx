@@ -5,7 +5,7 @@ import { useThemeStore } from "../features/theme/store/themeStore";
 
 function App() {
   const { boards, selectedBoardId } = useBoardStore();
-  const { theme } = useThemeStore();
+  const { theme, toggleTheme } = useThemeStore();
 
   const selectedBoard =
     boards.find((board) => board.id === selectedBoardId) ?? null;
@@ -16,6 +16,10 @@ function App() {
 
   return (
     <main>
+      <button type='button' onClick={toggleTheme}>
+        Toggle theme
+      </button>
+
       <h1>Kanban App</h1>
 
       {selectedBoard ? (
