@@ -1,0 +1,33 @@
+.root {
+  width: 300px;
+  flex-shrink: 0;
+  padding: var(--space-300);
+  border-right: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+.heading {
+  margin-bottom: var(--space-200);
+  color: var(--color-text-muted);
+}
+
+.list {
+  display: grid;
+  gap: var(--space-100);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.button {
+  width: 100%;
+  padding: var(--space-200);
+  text-align: left;
+  border-radius: var(--radius-lg);
+  color: var(--color-text-muted);
+}
+
+.buttonActive {
+  background-color: var(--color-purple);
+  color: var(--color-white);
+}

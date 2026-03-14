@@ -1,5 +1,6 @@
 import { useBoardStore } from "@features/boards/store/boardStore";
 import { useShallow } from "zustand/react/shallow";
+import styles from "./Sidebar.module.scss";
 
 export default function Sidebar() {
   const { boards, selectedBoardId, selectBoard } = useBoardStore(
@@ -11,11 +12,11 @@ export default function Sidebar() {
   );
 
   return (
-    <aside id='app-sidebar' aria-label='Board sidebar'>
-      <p>ALL BOARDS ({boards.length})</p>
+    <aside id='app-sidebar' aria-label='Board sidebar' className={styles.root}>
+      <p className={styles.heading}>ALL BOARDS ({boards.length})</p>
 
       <div role='tablist' aria-label='Boards' aria-orientation='horizontal'>
-        <ul>
+        <ul className={styles.list}>
           {boards.map((board) => {
             const isActive = board.id === selectedBoardId;
 
@@ -27,6 +28,7 @@ export default function Sidebar() {
                   aria-controls={`panel-${board.id}`}
                   id={`tab-${board.id}`}
                   onClick={() => selectBoard(board.id)}
+                  className={`${styles.button} ${isActive ? styles.buttonActive : ""}`}
                 >
                   {board.name}
                 </button>
