@@ -1,8 +1,14 @@
+/* -------------------------
+  Root
+------------------------- */
 .root {
   min-height: 100vh;
   background-color: var(--color-bg);
 }
 
+/* -------------------------
+  Layout
+------------------------- */
 .shell {
   display: flex;
   min-height: 100vh;
@@ -11,6 +17,7 @@
 .content {
   flex: 1;
   min-width: 0;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }

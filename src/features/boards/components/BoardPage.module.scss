@@ -1,12 +1,19 @@
+/* -------------------------
+  Root
+------------------------- */
 .root {
-  height: 100%;
+  flex: 1;
+  min-height: 0;
 }
 
+/* -------------------------
+  Columns
+------------------------- */
 .columns {
-  height: 100%;
   display: flex;
   gap: var(--space-300);
   align-items: flex-start;
+  height: 100%;
   overflow-x: auto;
   padding: var(--space-300);
 }
