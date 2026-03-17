@@ -29,7 +29,11 @@
   position: fixed;
   left: 0;
   bottom: 2rem;
-  padding: 1rem 1.125rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 48px;
   border-radius: 0 999px 999px 0;
   background-color: var(--color-purple);
   color: var(--color-white);

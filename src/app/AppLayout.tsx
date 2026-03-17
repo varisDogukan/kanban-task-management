@@ -6,6 +6,9 @@ import { useUiStore } from "@features/ui/store/uiStore";
 import { useThemeStore } from "@features/theme/store/themeStore";
 import styles from "./AppLayout.module.scss";
 
+import showSidebarIcon from "@assets/icons/icon-show-sidebar.svg";
+import VisuallyHidden from "@components/primitives/VisuallyHidden";
+
 type AppLayoutProps = {
   children: React.ReactNode;
 };
@@ -37,7 +40,8 @@ export default function AppLayout({ children }: AppLayoutProps) {
           onClick={openSidebar}
           className={styles.showSidebarButton}
         >
-          Show Sidebar
+          <VisuallyHidden>Show Sidebar</VisuallyHidden>
+          <img src={showSidebarIcon} alt='' aria-hidden='true' />
         </button>
       ) : null}
     </div>
