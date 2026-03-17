@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useShallow } from "zustand/react/shallow";
 
 import Sidebar from "@components/shared/Sidebar";
 import { useUiStore } from "@features/ui/store/uiStore";
@@ -11,7 +12,12 @@ type AppLayoutProps = {
 
 export default function AppLayout({ children }: AppLayoutProps) {
   const theme = useThemeStore((state) => state.theme);
-  const isSidebarOpen = useUiStore((state) => state.isSidebarOpen);
+  const { isSidebarOpen, openSidebar } = useUiStore(
+    useShallow((state) => ({
+      isSidebarOpen: state.isSidebarOpen,
+      openSidebar: state.openSidebar,
+    })),
+  );
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -24,6 +30,16 @@ export default function AppLayout({ children }: AppLayoutProps) {
 
         <main className={styles.content}>{children}</main>
       </div>
+
+      {!isSidebarOpen ? (
+        <button
+          type='button'
+          onClick={openSidebar}
+          className={styles.showSidebarButton}
+        >
+          Show Sidebar
+        </button>
+      ) : null}
     </div>
   );
 }
