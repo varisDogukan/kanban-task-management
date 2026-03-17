@@ -1,6 +1,5 @@
-import BoardColumn from "./BoardColumn";
+import { BoardColumn, EmptyBoardState, NewColumnLane } from ".";
 import styles from "./BoardPage.module.scss";
-import EmptyBoardState from "./EmptyBoardState";
 
 import type { Board } from "../types/board.types";
 
@@ -30,6 +29,8 @@ export default function BoardPage({ board }: BoardPageProps) {
         {board.columns.map((column) => (
           <BoardColumn key={column.id} column={column} />
         ))}
+
+        <NewColumnLane />
       </div>
     </section>
   );
