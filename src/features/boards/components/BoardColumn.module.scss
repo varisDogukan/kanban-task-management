@@ -1,10 +1,27 @@
+/* -------------------------
+  Root
+------------------------- */
 .root {
-  width: 200px;
+  width: 280px;
   flex-shrink: 0;
 }
 
+/* -------------------------
+  Header
+------------------------- */
 .header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   margin-bottom: var(--space-200);
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--color-medium-grey);
+  flex-shrink: 0;
 }
 
 .title {
@@ -13,16 +30,17 @@
   line-height: var(--line-height-heading-s);
   font-weight: var(--font-weight-heading-s);
   letter-spacing: var(--letter-spacing-heading-s);
+  text-transform: uppercase;
 }
 
-.taskCount {
+.count {
   color: var(--color-text-muted);
-  font-size: var(--font-size-body-m);
-  line-height: var(--line-height-body-m);
-  font-weight: var(--font-weight-body-m);
 }
 
-.task {
+/* -------------------------
+  Tasks
+------------------------- */
+.tasks {
   display: grid;
   gap: var(--space-200);
 }
