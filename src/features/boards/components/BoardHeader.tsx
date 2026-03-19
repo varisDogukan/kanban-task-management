@@ -10,7 +10,10 @@ type BoardHeaderProps = {
 /**
  * Renders the selected board header with its primary actions.
  */
-function BoardHeader({ title, isAddTaskDisabled }: BoardHeaderProps) {
+export default function BoardHeader({
+  title,
+  isAddTaskDisabled,
+}: BoardHeaderProps) {
   return (
     <header className={styles.root}>
       <h1 className={styles.title}>{title}</h1>
@@ -32,5 +35,3 @@ function BoardHeader({ title, isAddTaskDisabled }: BoardHeaderProps) {
     </header>
   );
 }
-
-export default BoardHeader;

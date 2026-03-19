@@ -9,7 +9,7 @@ type BoardColumnProps = {
 /**
  * Renders a single kanban column lane with its task list.
  */
-function BoardColumn({ column }: BoardColumnProps) {
+export default function BoardColumn({ column }: BoardColumnProps) {
   return (
     <article className={styles.root}>
       <header className={styles.header}>
@@ -28,5 +28,3 @@ function BoardColumn({ column }: BoardColumnProps) {
     </article>
   );
 }
-
-export default BoardColumn;

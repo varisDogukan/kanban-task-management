@@ -2,10 +2,12 @@
   Root
 ------------------------- */
 .root {
+  width: 100%;
   padding: var(--space-300);
   border-radius: var(--radius-lg);
   background-color: var(--color-surface);
   box-shadow: 0 4px 6px rgba(54, 78, 126, 0.1);
+  text-align: left;
 }
 
 /* -------------------------
@@ -24,4 +26,16 @@
   font-size: var(--font-size-body-m);
   line-height: var(--line-height-body-m);
   font-weight: var(--font-weight-body-m);
+}
+
+/* -------------------------
+  States
+------------------------- */
+.root:hover .title {
+  color: var(--color-purple);
+}
+
+.root:focus-visible {
+  outline: 2px solid var(--color-purple);
+  outline-offset: 2px;
 }

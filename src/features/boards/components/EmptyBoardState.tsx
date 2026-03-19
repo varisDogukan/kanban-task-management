@@ -3,7 +3,8 @@ import styles from "./EmptyBoardState.module.scss";
 /**
  * Renders the empty board placeholder when no columns exist yet.
  */
-function EmptyBoardState() {
+
+export default function EmptyBoardState() {
   return (
     <section className={styles.root}>
       <p className={styles.message}>
@@ -16,5 +17,3 @@ function EmptyBoardState() {
     </section>
   );
 }
-
-export default EmptyBoardState;
