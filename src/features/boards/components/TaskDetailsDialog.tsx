@@ -1,3 +1,4 @@
+import { useBoardStore } from "@features/boards/store/boardStore";
 import type { Task } from "../types/board.types";
 import styles from "./TaskDetailsDialog.module.scss";
 
@@ -13,6 +14,8 @@ export default function TaskDetailDialog({
   task,
   onClose,
 }: TaskDetailsDialogProps) {
+  const toggleSubtask = useBoardStore((state) => state.toggleSubtask);
+
   const completedSubtasks = task.subtasks.filter(
     (subtask) => subtask.isCompleted,
   ).length;
@@ -51,7 +54,11 @@ export default function TaskDetailDialog({
           <div className={styles.subtasksList}>
             {task.subtasks.map((subtask) => (
               <label key={subtask.id} className={styles.subtaskItem}>
-                <input type='checkbox' checked={subtask.isCompleted} readOnly />
+                <input
+                  type='checkbox'
+                  checked={subtask.isCompleted}
+                  onChange={() => toggleSubtask(task.id, subtask.id)}
+                />
 
                 <span
                   className={
