@@ -1,3 +1,6 @@
+/* -------------------------
+  Root
+------------------------- */
 .root {
   display: flex;
   align-items: center;
@@ -8,6 +11,9 @@
   background-color: var(--color-surface);
 }
 
+/* -------------------------
+  Content
+------------------------- */
 .title {
   font-size: var(--font-size-heading-xl);
   line-height: var(--line-height-heading-xl);
@@ -15,6 +21,15 @@
   color: var(--color-text);
 }
 
+.actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-200);
+}
+
+/* -------------------------
+  Buttons
+------------------------- */
 .action {
   padding: 0.75rem 1.5rem;
   border-radius: 999px;
@@ -23,6 +38,15 @@
   font-size: var(--font-size-body-m);
   line-height: var(--line-height-body-m);
   font-weight: var(--font-weight-body-m);
+}
+
+.menuButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--color-text-muted);
 }
 
 .action:disabled {
