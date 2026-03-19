@@ -15,11 +15,11 @@ export default function TaskCard({ task }: TaskCardProps) {
 
   return (
     <button type='button' className={styles.root}>
-      <h4 className={styles.title}>{task.title}</h4>
+      <span className={styles.title}>{task.title}</span>
 
-      <p className={styles.meta}>
+      <span className={styles.meta}>
         {completedSubtasks} of {task.subtasks.length} subtasks
-      </p>
+      </span>
     </button>
   );
 }
