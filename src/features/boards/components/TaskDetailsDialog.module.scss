@@ -31,14 +31,12 @@
   gap: var(--space-200);
   margin-bottom: var(--space-200);
 }
-
 .title {
   color: var(--color-text);
   font-size: var(--font-size-heading-l);
   line-height: var(--line-height-heading-l);
   font-weight: var(--font-weight-heading-l);
 }
-
 .closeButton {
   color: var(--color-text-muted);
   font-size: var(--font-size-body-m);
@@ -54,4 +52,40 @@
   font-size: var(--font-size-body-l);
   line-height: var(--line-height-body-l);
   font-weight: var(--font-weight-body-l);
+}
+
+/* -------------------------
+  Subtasks
+------------------------- */
+.subtasks {
+  margin-top: var(--space-300);
+}
+.subtasksTitle {
+  margin-bottom: var(--space-200);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+  font-weight: var(--font-weight-body-m);
+}
+.subtasksList {
+  display: grid;
+  gap: var(--space-100);
+}
+.subtaskItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-200);
+  padding: var(--space-200);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+}
+.subtaskLabel {
+  color: var(--color-text);
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+  font-weight: var(--font-weight-body-m);
+}
+.subtaskLabelCompleted {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
 }

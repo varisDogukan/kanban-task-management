@@ -13,6 +13,10 @@ export default function TaskDetailDialog({
   task,
   onClose,
 }: TaskDetailsDialogProps) {
+  const completedSubtasks = task.subtasks.filter(
+    (subtask) => subtask.isCompleted,
+  ).length;
+
   return (
     <div
       role='dialog'
@@ -38,6 +42,30 @@ export default function TaskDetailDialog({
         {task.description ? (
           <p className={styles.description}>{task.description}</p>
         ) : null}
+
+        <section className={styles.subtasks}>
+          <h3 className={styles.subtasksTitle}>
+            Subtasks ({completedSubtasks} of {task.subtasks.length})
+          </h3>
+
+          <div className={styles.subtasksList}>
+            {task.subtasks.map((subtask) => (
+              <label key={subtask.id} className={styles.subtaskItem}>
+                <input type='checkbox' checked={subtask.isCompleted} readOnly />
+
+                <span
+                  className={
+                    subtask.isCompleted
+                      ? `${styles.subtaskLabel} ${styles.subtaskLabelCompleted}`
+                      : styles.subtaskLabel
+                  }
+                >
+                  {subtask.title}
+                </span>
+              </label>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );
