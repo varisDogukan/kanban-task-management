@@ -1,4 +1,5 @@
 import type { Task } from "../types/board.types";
+import styles from "./TaskDetailsDialog.module.scss";
 
 type TaskDetailsDialogProps = {
   task: Task;
@@ -13,14 +14,31 @@ export default function TaskDetailDialog({
   onClose,
 }: TaskDetailsDialogProps) {
   return (
-    <div role='dialog'>
-      <button type='button' onClick={onClose}>
-        Close
-      </button>
+    <div
+      role='dialog'
+      aria-modal='true'
+      aria-labelledby={`task-dialog-${task.id}`}
+      className={styles.overlay}
+    >
+      <div className={styles.panel}>
+        <div className={styles.header}>
+          <h2 id={`task-dialog-${task.id}`} className={styles.title}>
+            {task.title}
+          </h2>
 
-      <h2 id={`task-dialog-${task.id}`}>{task.title}</h2>
+          <button
+            type='button'
+            onClick={onClose}
+            className={styles.closeButton}
+          >
+            Close
+          </button>
+        </div>
 
-      {task.description ? <p>{task.description}</p> : null}
+        {task.description ? (
+          <p className={styles.description}>{task.description}</p>
+        ) : null}
+      </div>
     </div>
   );
 }

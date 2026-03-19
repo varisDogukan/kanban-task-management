@@ -1,0 +1,57 @@
+/* -------------------------
+  Overlay
+------------------------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: var(--space-300);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* -------------------------
+  Panel
+------------------------- */
+.panel {
+  width: min(100%, 30rem);
+  padding: var(--space-300);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  box-shadow: 0 10px 20px rgba(54, 78, 126, 0.25);
+}
+
+/* -------------------------
+  Header
+------------------------- */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-200);
+  margin-bottom: var(--space-200);
+}
+
+.title {
+  color: var(--color-text);
+  font-size: var(--font-size-heading-l);
+  line-height: var(--line-height-heading-l);
+  font-weight: var(--font-weight-heading-l);
+}
+
+.closeButton {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-body-m);
+  line-height: var(--line-height-body-m);
+  font-weight: var(--font-weight-body-m);
+}
+
+/* -------------------------
+  Content
+------------------------- */
+.description {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-body-l);
+  line-height: var(--line-height-body-l);
+  font-weight: var(--font-weight-body-l);
+}
