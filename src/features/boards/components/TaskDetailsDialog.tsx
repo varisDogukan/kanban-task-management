@@ -1,3 +1,4 @@
+import { useShallow } from "zustand/react/shallow";
 import { useBoardStore } from "@features/boards/store/boardStore";
 import type { Task } from "../types/board.types";
 import styles from "./TaskDetailsDialog.module.scss";
@@ -14,7 +15,12 @@ export default function TaskDetailDialog({
   task,
   onClose,
 }: TaskDetailsDialogProps) {
-  const toggleSubtask = useBoardStore((state) => state.toggleSubtask);
+  const { toggleSubtask, updateTaskStatus } = useBoardStore(
+    useShallow((state) => ({
+      toggleSubtask: state.toggleSubtask,
+      updateTaskStatus: state.updateTaskStatus,
+    })),
+  );
 
   const completedSubtasks = task.subtasks.filter(
     (subtask) => subtask.isCompleted,
@@ -73,6 +79,26 @@ export default function TaskDetailDialog({
             ))}
           </div>
         </section>
+
+        <div className={styles.status}>
+          <label
+            htmlFor={`task-status-${task.id}`}
+            className={styles.statusLabel}
+          >
+            Current Status
+          </label>
+
+          <select
+            id={`task-status-${task.id}`}
+            value={task.status}
+            onChange={(event) => updateTaskStatus(task.id, event.target.value)}
+            className={styles.statusSelect}
+          >
+            <option value='Todo'>Todo</option>
+            <option value='Doing'>Doing</option>
+            <option value='Done'>Done</option>
+          </select>
+        </div>
       </div>
     </div>
   );
