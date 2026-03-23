@@ -34,8 +34,9 @@ export default function TaskDetailDialog({
       aria-modal='true'
       aria-labelledby={`task-dialog-${task.id}`}
       className={styles.overlay}
+      onClick={onClose}
     >
-      <div className={styles.panel}>
+      <div className={styles.panel} onClick={onClose}>
         <div className={styles.header}>
           <h2 id={`task-dialog-${task.id}`} className={styles.title}>
             {task.title}
