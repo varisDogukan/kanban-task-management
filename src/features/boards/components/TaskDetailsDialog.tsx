@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useShallow } from "zustand/react/shallow";
 import { useBoardStore } from "@features/boards/store/boardStore";
 import type { Task } from "../types/board.types";
@@ -18,6 +18,7 @@ export default function TaskDetailDialog({
   statusOptions,
   onClose,
 }: TaskDetailsDialogProps) {
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const { toggleSubtask, updateTaskStatus } = useBoardStore(
     useShallow((state) => ({
       toggleSubtask: state.toggleSubtask,
@@ -32,6 +33,7 @@ export default function TaskDetailDialog({
       }
     }
 
+    closeButtonRef.current?.focus();
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
@@ -60,6 +62,7 @@ export default function TaskDetailDialog({
           <button
             type='button'
             onClick={onClose}
+            ref={closeButtonRef}
             className={styles.closeButton}
           >
             Close
