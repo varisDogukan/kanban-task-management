@@ -50,20 +50,46 @@ export const useBoardStore = create<BoardStore>((set) => {
 
     updateTaskStatus: (taskId, nextStatus) =>
       set((state) => ({
-        boards: state.boards.map((board) => ({
-          ...board,
-          columns: board.columns.map((column) => ({
-            ...column,
-            tasks: column.tasks.map((task) =>
-              task.id === taskId
+        boards: state.boards.map((board) => {
+          let taskToMove: Board["columns"][number]["tasks"][number] | null =
+            null;
+
+          const columnsWithoutTask = board.columns.map((column) => {
+            const remainingTasks = column.tasks.filter((task) => {
+              if (task.id !== taskId) {
+                return true;
+              }
+
+              taskToMove = {
+                ...task,
+                status: nextStatus,
+              };
+
+              return false;
+            });
+
+            return {
+              ...column,
+              tasks: remainingTasks,
+            };
+          });
+
+          if (!taskToMove) {
+            return board;
+          }
+
+          return {
+            ...board,
+            columns: columnsWithoutTask.map((column) =>
+              column.name === nextStatus
                 ? {
-                    ...task,
-                    status: nextStatus,
+                    ...column,
+                    tasks: [...column.tasks, taskToMove!],
                   }
-                : task,
+                : column,
             ),
-          })),
-        })),
+          };
+        }),
       })),
   };
 });
