@@ -8,6 +8,7 @@ type BoardStore = {
   setBoards: (boards: Board[]) => void;
   selectBoard: (boardId: string) => void;
   toggleSubtask: (taskId: string, subtaskId: string) => void;
+  updateTaskStatus: (taskId: string, nextStatus: string) => void;
 };
 
 export const useBoardStore = create<BoardStore>((set) => {
@@ -43,6 +44,24 @@ export const useBoardStore = create<BoardStore>((set) => {
                 ),
               };
             }),
+          })),
+        })),
+      })),
+
+    updateTaskStatus: (taskId, nextStatus) =>
+      set((state) => ({
+        boards: state.boards.map((board) => ({
+          ...board,
+          columns: board.columns.map((column) => ({
+            ...column,
+            tasks: column.tasks.map((task) =>
+              task.id === taskId
+                ? {
+                    ...task,
+                    status: nextStatus,
+                  }
+                : task,
+            ),
           })),
         })),
       })),
