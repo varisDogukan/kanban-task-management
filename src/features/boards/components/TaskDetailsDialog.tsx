@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useShallow } from "zustand/react/shallow";
 import { useBoardStore } from "@features/boards/store/boardStore";
 import type { Task } from "../types/board.types";
@@ -23,6 +24,20 @@ export default function TaskDetailDialog({
       updateTaskStatus: state.updateTaskStatus,
     })),
   );
+
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
 
   const completedSubtasks = task.subtasks.filter(
     (subtask) => subtask.isCompleted,
