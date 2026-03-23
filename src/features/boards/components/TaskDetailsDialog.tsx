@@ -5,6 +5,7 @@ import styles from "./TaskDetailsDialog.module.scss";
 
 type TaskDetailsDialogProps = {
   task: Task;
+  statusOptions: string[];
   onClose: () => void;
 };
 
@@ -13,6 +14,7 @@ type TaskDetailsDialogProps = {
  */
 export default function TaskDetailDialog({
   task,
+  statusOptions,
   onClose,
 }: TaskDetailsDialogProps) {
   const { toggleSubtask, updateTaskStatus } = useBoardStore(
@@ -94,9 +96,11 @@ export default function TaskDetailDialog({
             onChange={(event) => updateTaskStatus(task.id, event.target.value)}
             className={styles.statusSelect}
           >
-            <option value='Todo'>Todo</option>
-            <option value='Doing'>Doing</option>
-            <option value='Done'>Done</option>
+            {statusOptions.map((statusOption) => (
+              <option key={statusOption} value={statusOption}>
+                {statusOption}
+              </option>
+            ))}
           </select>
         </div>
       </div>

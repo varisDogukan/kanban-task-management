@@ -41,8 +41,12 @@ export default function App() {
         <p>Selected board not found.</p>
       )}
 
-      {selectedTask ? (
-        <TaskDetailsDialog task={selectedTask} onClose={closeTaskDetails} />
+      {selectedTask && selectedBoard ? (
+        <TaskDetailsDialog
+          task={selectedTask}
+          statusOptions={selectedBoard.columns.map((column) => column.name)}
+          onClose={closeTaskDetails}
+        />
       ) : null}
     </AppLayout>
   );
