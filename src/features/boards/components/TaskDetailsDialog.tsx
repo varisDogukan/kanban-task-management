@@ -25,6 +25,7 @@ export default function TaskDetailsDialog({
 }: TaskDetailsDialogProps) {
   const actionsButtonRef = useRef<HTMLButtonElement | null>(null);
   const previousFocusedElementRef = useRef<HTMLElement | null>(null);
+  const menuWrapperRef = useRef<HTMLDivElement | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { toggleSubtask, updateTaskStatus } = useBoardStore(
@@ -33,6 +34,26 @@ export default function TaskDetailsDialog({
       updateTaskStatus: state.updateTaskStatus,
     })),
   );
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return;
+    }
+
+    function handlePointerDown(event: MouseEvent) {
+      const target = event.target as Node | null;
+
+      if (!menuWrapperRef.current?.contains(target)) {
+        setIsMenuOpen(false);
+      }
+    }
+
+    window.addEventListener("mousedown", handlePointerDown);
+
+    return () => {
+      window.removeEventListener("mousedown", handlePointerDown);
+    };
+  }, [isMenuOpen]);
 
   const completedSubtasks = task.subtasks.filter(
     (subtask) => subtask.isCompleted,
@@ -86,7 +107,7 @@ export default function TaskDetailsDialog({
             {task.title}
           </h2>
 
-          <div className={styles.menuWrapper}>
+          <div className={styles.menuWrapper} ref={menuWrapperRef}>
             <button
               type='button'
               ref={actionsButtonRef}
