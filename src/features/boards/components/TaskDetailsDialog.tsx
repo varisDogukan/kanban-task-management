@@ -16,22 +16,33 @@ type TaskDetailsDialogProps = {
 };
 
 /**
- * Renders a minimal task details dialog shell for the selected task.
+ * Renders the task details dialog for the selected task.
  */
-export default function TaskDetailDialog({
+export default function TaskDetailsDialog({
   task,
   statusOptions,
   onClose,
 }: TaskDetailsDialogProps) {
-  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const actionsButtonRef = useRef<HTMLButtonElement | null>(null);
   const previousFocusedElementRef = useRef<HTMLElement | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const { toggleSubtask, updateTaskStatus } = useBoardStore(
     useShallow((state) => ({
       toggleSubtask: state.toggleSubtask,
       updateTaskStatus: state.updateTaskStatus,
     })),
   );
+
+  const completedSubtasks = task.subtasks.filter(
+    (subtask) => subtask.isCompleted,
+  ).length;
+
+  const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -51,18 +62,15 @@ export default function TaskDetailDialog({
 
     previousFocusedElementRef.current =
       document.activeElement as HTMLElement | null;
-    closeButtonRef.current?.focus();
+
+    actionsButtonRef.current?.focus();
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      previousFocusedElementRef.current?.focus();
       window.removeEventListener("keydown", handleKeyDown);
+      previousFocusedElementRef.current?.focus();
     };
   }, [onClose]);
-
-  const completedSubtasks = task.subtasks.filter(
-    (subtask) => subtask.isCompleted,
-  ).length;
 
   return (
     <div
@@ -70,9 +78,9 @@ export default function TaskDetailDialog({
       aria-modal='true'
       aria-labelledby={`task-dialog-${task.id}`}
       className={styles.overlay}
-      onClick={onClose}
+      onClick={handleOverlayClick}
     >
-      <div className={styles.panel} onClick={onClose}>
+      <div className={styles.panel}>
         <div className={styles.header}>
           <h2 id={`task-dialog-${task.id}`} className={styles.title}>
             {task.title}
@@ -81,14 +89,14 @@ export default function TaskDetailDialog({
           <div className={styles.menuWrapper}>
             <button
               type='button'
-              ref={closeButtonRef}
+              ref={actionsButtonRef}
               className={styles.closeButton}
               aria-expanded={isMenuOpen}
               aria-haspopup='menu'
               aria-controls={`task-actions-menu-${task.id}`}
               onClick={() => setIsMenuOpen((current) => !current)}
             >
-              <VisuallyHidden>Open task action</VisuallyHidden>
+              <VisuallyHidden>Open task actions</VisuallyHidden>
               <img src={ellipsisIcon} alt='' aria-hidden='true' />
             </button>
 
