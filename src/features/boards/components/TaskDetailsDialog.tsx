@@ -1,8 +1,13 @@
 import { useEffect, useRef } from "react";
+
 import { useShallow } from "zustand/react/shallow";
 import { useBoardStore } from "@features/boards/store/boardStore";
-import type { Task } from "../types/board.types";
+import VisuallyHidden from "@components/primitives/VisuallyHidden";
+import ellipsisIcon from "@assets/icons/icon-vertical-ellipsis.svg";
+
 import styles from "./TaskDetailsDialog.module.scss";
+
+import type { Task } from "../types/board.types";
 
 type TaskDetailsDialogProps = {
   task: Task;
@@ -74,11 +79,11 @@ export default function TaskDetailDialog({
 
           <button
             type='button'
-            onClick={onClose}
             ref={closeButtonRef}
             className={styles.closeButton}
           >
-            Close
+            <VisuallyHidden>Open task action</VisuallyHidden>
+            <img src={ellipsisIcon} alt='' aria-hidden='true' />
           </button>
         </div>
 
