@@ -19,6 +19,7 @@ export default function TaskDetailDialog({
   onClose,
 }: TaskDetailsDialogProps) {
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const previousFocusedElementRef = useRef<HTMLElement | null>(null);
   const { toggleSubtask, updateTaskStatus } = useBoardStore(
     useShallow((state) => ({
       toggleSubtask: state.toggleSubtask,
@@ -42,10 +43,13 @@ export default function TaskDetailDialog({
       }
     }
 
+    previousFocusedElementRef.current =
+      document.activeElement as HTMLElement | null;
     closeButtonRef.current?.focus();
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
+      previousFocusedElementRef.current?.focus();
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [onClose]);
