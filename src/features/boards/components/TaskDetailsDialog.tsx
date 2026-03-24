@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useShallow } from "zustand/react/shallow";
 import { useBoardStore } from "@features/boards/store/boardStore";
@@ -25,6 +25,7 @@ export default function TaskDetailDialog({
 }: TaskDetailsDialogProps) {
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const previousFocusedElementRef = useRef<HTMLElement | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { toggleSubtask, updateTaskStatus } = useBoardStore(
     useShallow((state) => ({
       toggleSubtask: state.toggleSubtask,
@@ -77,14 +78,44 @@ export default function TaskDetailDialog({
             {task.title}
           </h2>
 
-          <button
-            type='button'
-            ref={closeButtonRef}
-            className={styles.closeButton}
-          >
-            <VisuallyHidden>Open task action</VisuallyHidden>
-            <img src={ellipsisIcon} alt='' aria-hidden='true' />
-          </button>
+          <div className={styles.menuWrapper}>
+            <button
+              type='button'
+              ref={closeButtonRef}
+              className={styles.closeButton}
+              aria-expanded={isMenuOpen}
+              aria-haspopup='menu'
+              aria-controls={`task-actions-menu-${task.id}`}
+              onClick={() => setIsMenuOpen((current) => !current)}
+            >
+              <VisuallyHidden>Open task action</VisuallyHidden>
+              <img src={ellipsisIcon} alt='' aria-hidden='true' />
+            </button>
+
+            {isMenuOpen ? (
+              <div
+                id={`task-actions-menu-${task.id}`}
+                role='menu'
+                className={styles.menu}
+              >
+                <button
+                  type='button'
+                  role='menuitem'
+                  className={styles.menuItem}
+                >
+                  Edit Task
+                </button>
+
+                <button
+                  type='button'
+                  role='menuitem'
+                  className={`${styles.menuItem} ${styles.menuItemDanger}`}
+                >
+                  Delete Task
+                </button>
+              </div>
+            ) : null}
+          </div>
         </div>
 
         {task.description ? (

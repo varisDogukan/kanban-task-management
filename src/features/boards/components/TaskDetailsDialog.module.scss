@@ -47,6 +47,36 @@
 }
 
 /* -------------------------
+  Menu
+------------------------- */
+.menuWrapper {
+  position: relative;
+}
+.menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 12rem;
+  display: grid;
+  gap: var(--space-100);
+  padding: var(--space-200);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  box-shadow: 0 10px 20px rgba(54, 78, 126, 0.25);
+}
+.menuItem {
+  width: 100%;
+  text-align: left;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-body-l);
+  line-height: var(--line-height-body-l);
+  font-weight: var(--font-weight-body-l);
+}
+.menuItemDanger {
+  color: var(--color-red);
+}
+
+/* -------------------------
   Content
 ------------------------- */
 .description {
