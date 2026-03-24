@@ -9,6 +9,7 @@ type BoardStore = {
   selectBoard: (boardId: string) => void;
   toggleSubtask: (taskId: string, subtaskId: string) => void;
   updateTaskStatus: (taskId: string, nextStatus: string) => void;
+  deleteTask: (taskId: string) => void;
 };
 
 export const useBoardStore = create<BoardStore>((set) => {
@@ -90,6 +91,17 @@ export const useBoardStore = create<BoardStore>((set) => {
             ),
           };
         }),
+      })),
+
+    deleteTask: (taskId) =>
+      set((state) => ({
+        boards: state.boards.map((board) => ({
+          ...board,
+          columns: board.columns.map((column) => ({
+            ...column,
+            tasks: column.tasks.filter((task) => task.id !== taskId),
+          })),
+        })),
       })),
   };
 });
